@@ -4,6 +4,7 @@ const connectDB = require('./config/db');
 
 //Route File
 const hospitals = require('./routes/hospitals');
+const auth = require('./routes/auth');
 
 //Connect to DataBase
 dotenv.config({path:'./config/config.env'});
@@ -17,6 +18,7 @@ connectDB();
 const app =express(); //สร้างตัวแปร app จาก express
 
 app.use(express.json());
+
 
 
 
@@ -55,6 +57,8 @@ app.use(express.json());
 
 
 app.use('/api/v1/hospitals',hospitals);
+app.use('/api/v1/auth',auth);
+
 // Run Server
 const PORT = process.env.PORT || 5000; //Port ให้ตรง ENV
 const server = app.listen(PORT, console.log('Server running in', process.env.MODE_ENV, 'mode on port', PORT));

@@ -3,8 +3,10 @@ const {getHospitals,createHospital,deleteHospital,getHospital,updateHospital} = 
 
 const router = express.Router();
 
-router.route('/').get(getHospitals).post(createHospital);
-router.route('/:id').get(getHospital).delete(deleteHospital).put(updateHospital);
+const {protect,authorize} = require('../middleware/auth');
+
+router.route('/').get(getHospitals).post(protect, authorize('admin'),createHospital);
+router.route('/:id').get(getHospital).delete(protect,authorize('admin'),deleteHospital).put(protect,authorize('admin'),updateHospital);
 // // const app = express();
 
 // Function
