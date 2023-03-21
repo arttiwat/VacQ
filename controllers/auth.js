@@ -89,3 +89,21 @@ exports.getMe = async(req,res,next)=>{
     const user = await User.findById(req.user.id);
     res.status(200).json({success:true,data:user});
 };
+
+//Update
+// exports.updateHospital = async (req,res,next) => {
+//     try{
+//         const hospital = await Hospital.findByIdAndUpdate(req.params.id, req.body, {
+//             new: true,
+//             runValidators:true
+//         });
+
+//         if(!hospital){
+//             return res.status(400).json({success:false});
+//         }
+        
+//         res.status(200).json({success:true,data:hospital});
+//     }catch(err){
+//         res.status(400).json({success:false});
+//     }
+// };
